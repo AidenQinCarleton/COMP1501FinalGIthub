@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Witchcraft(loop - fantasy - guitar - piano).mp3-78e7359bb47523c967c09a298587be28.mp3str"
+
+[deps]
+
+source_file="res://Witchcraft(loop - fantasy - guitar - piano).mp3"
+dest_files=[ "res://.import/Witchcraft(loop - fantasy - guitar - piano).mp3-78e7359bb47523c967c09a298587be28.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

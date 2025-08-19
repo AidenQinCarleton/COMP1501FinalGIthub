@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Berkahi Blackletter.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://GameOverWin.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+outline_size = 3
+outline_color = Color( 0.0941176, 0.0392157, 0.0392157, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+outline_size = 1
+outline_color = Color( 0.760784, 0.0666667, 0.0666667, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Game Over Win" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 367.0
+margin_top = 99.0
+margin_right = 895.0
+margin_bottom = 255.0
+custom_colors/font_color = Color( 0.913725, 0.0980392, 0.0980392, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.0745098, 0.0627451, 0.0627451, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Game Over
+You Defeated Lucifer!"
+align = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 519.0
+margin_top = 331.0
+margin_right = 694.0
+margin_bottom = 434.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

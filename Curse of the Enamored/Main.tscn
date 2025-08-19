@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://StartMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Witchcraft(loop - fantasy - guitar - piano).mp3" type="AudioStream" id=4]
+[ext_resource path="res://Instructions.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/floor_3.png" type="Texture" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1281, 4, 0, 0, 0, 0, 1282, 799, 0, 0, 0, 0, 1, 798, 0, 0, 0, 0, 1, 1 )
+}
+
+[node name="Main" type="Node" groups=["Main"]]
+script = ExtResource( 1 )
+enemy_scene = ExtResource( 2 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2( 3.371, 1 )
+motion_mirroring = Vector2( 380, 810 )
+
+[node name="Floor3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1, 0 )
+scale = Vector2( 3.37105, 1 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="GenerateTimer" type="Timer" parent="."]
+
+[node name="GameCountDown" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="EnemiesPath" type="Path2D" parent="." groups=["EnemyPath"]]
+curve = SubResource( 1 )
+
+[node name="EnemiesSpawnLocation" type="PathFollow2D" parent="EnemiesPath"]
+position = Vector2( 1, 1 )
+rotation = 0.00234375
+
+[node name="StartMenu" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 638, 406 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Instructions" parent="." instance=ExtResource( 5 )]
+margin_left = 28.0
+margin_top = 1.0
+margin_right = 68.0
+margin_bottom = 41.0
+
+[connection signal="timeout" from="GenerateTimer" to="." method="_on_GenerateTimer_timeout"]
+[connection signal="timeout" from="GameCountDown" to="." method="_on_GameCountDown_timeout"]
+[connection signal="start_game" from="StartMenu" to="." method="_on_StartMenu_start_game"]

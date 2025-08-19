@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Level.gd" type="Script" id=1]
+[ext_resource path="res://Berkahi Blackletter.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="Level" type="CanvasLayer" groups=["Level"]]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1127.0
+margin_top = 6.0
+margin_right = 1256.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 1 )
+text = "Level: "
+script = ExtResource( 1 )
